@@ -1,11 +1,14 @@
-application: trx
+application: helloworld
 version: 1
 runtime: python
 api_version: 1
 
 handlers:
-- url: /stylesheets
-  static_dir: stylesheets
+- url: /guestbook/stylesheets
+  static_dir: guestbook/stylesheets
 
-- url: /.*
-  script: helloworld.py
+- url: /guestbook/.*
+  script: guestbook/helloworld.py
+
+- url: /guestbook.
+  script: guestbook/helloworld.py
