@@ -85,13 +85,13 @@ class Guestbook(webapp.RequestHandler):
 #    self.response.out.write('<html><body>You wrote:<pre>')
 #    self.response.out.write(cgi.escape(self.request.get('content')))
 #    self.response.out.write('</pre></body></html>')
-    self.redirect('/')
+    self.redirect('/guestbook/')
 
 
 def main():
   application = webapp.WSGIApplication(
-                                       [('/', MainPage),
-                                        ('/sign', Guestbook)],
+                                       [('/guestbook/', MainPage),
+                                        ('/guestbook/sign', Guestbook)],
                                        debug=True)
   wsgiref.handlers.CGIHandler().run(application)
 

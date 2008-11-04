@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <link type="text/css" rel="stylesheet" href="stylesheets/main.css" />
   </head>
   <body>
     {% for greeting in greetings %}
@@ -12,7 +12,7 @@
       <blockquote>{{ greeting.content|escape }}</blockquote>
     {% endfor %}
 
-    <form action="/sign" method="post">
+    <form action="/guestbook/sign" method="post">
       <div><textarea name="content" rows="3" cols="60"></textarea></div>
       <div><input type="submit" value="Sign Guestbook"></div>
     </form>
