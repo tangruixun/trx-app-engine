@@ -7,8 +7,5 @@ handlers:
 - url: /guestbook/stylesheets
   static_dir: guestbook/stylesheets
 
-- url: /guestbook/.*
-  script: guestbook/helloworld.py
-
-- url: /guestbook.
+- url: /guestbook.*
   script: guestbook/helloworld.py

@@ -1,23 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="stylesheets/main.css" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"  />
+    <link type="text/css" rel="stylesheet" href="guestbook/stylesheets/main.css" />
   </head>
   <body>
     {% for greeting in greetings %}
       {% if greeting.author %}
-        <b>{{ greeting.author.nickname }}</b> wrote:
+        <b>{{ greeting.author.nickname }}</b>
       {% else %}
-       An anonymous person wrote:
+		{% if greeting.name %}
+			<b>{{ greeting.name|escape }}</b>
+		{% else %}
+			<b>{{ nickname }}</b>
+		{% endif %}
       {% endif %}
+	  在 {{ greeting.date|date:"n 月 d 日 g 时 m 分 s 秒" }} 写道:
       <blockquote>{{ greeting.content|escape }}</blockquote>
     {% endfor %}
-
+<hr />
+<div>
+{% for pageurl in pagetext %}
+    	<span><a href="/guestbook?page={{ pageurl }}">第{{ pageurl }}页</a></span>
+    {% endfor %}
+ </div>
+<hr />
     <form action="/guestbook/sign" method="post">
       <div><textarea name="content" rows="3" cols="60"></textarea></div>
       <div><input type="submit" value="Sign Guestbook"></div>
     </form>
 
-    <a href="{{ url }}">{{ url_linktext }}</a>
+    <a href="{{ url }}">{{ logurl_linktext }}</a>
 
   </body>
 </html>
